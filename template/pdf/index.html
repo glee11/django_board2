@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class= "container mt-5 mb-5">
+
+    <h1>PDF 문자 추출</h1>
+    <hr>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <form class="row mt-5">
+        <div class="mb-3">
+            <label class="form-label">Pdf 파일을 첨부해 주세요.</label>
+            <input type="file" name="tesbefore" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        
+        <div class='col-lg-3 text-center' style="margin:auto">
+            
+
+        
+            <button class="btn btn-secondary col-lg-4 mt-3 mb-3">Pdf</button>
+            
+        </div>
+        
+
+    </form>
+
+ 
+<form method="POST" action="{% url 'trans:index' %}">
+<div class='col-lg-10 text-center' style="margin:auto">
+    {% csrf_token %} 
+    <textarea name="before" class="form-control mt-3" style="font-size:25px; height:300px;">{{after}}</textarea>
+{% if after %}
+    <button class="mt-4 btn btn-secondary">Trans to KOREAN</button>
+{% endif %}
+</div>
+</form>
+{% endblock %}
